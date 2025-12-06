@@ -11,11 +11,21 @@ console.log(getIdRanges())
 const isInvalid = (id) => {
   id = id.toString()
   //assumption -> is it always first half against second half? -> this was correct :)
-  const f = id.slice(0, id.length / 2)
-  const l = id.slice(id.length / 2)
-  return f === l
+  // const f = id.slice(0, id.length / 2)
+  // const l = id.slice(id.length / 2)
+  // return f === l
+  let s = 0
+  let e = s + 1
+  while (e < id.length) {
+    const matches = [...id.matchAll(new RegExp(`${id.slice(s, e)}`, "g"))];
+    if (matches.length == (id.length / e)) {
+      return true
+    }
+    e++
+  }
 }
-
+36862281418
+4174379265
 let sum = 0
 for (const range of getIdRanges()) {
   const [f, l] = range.split("-")
