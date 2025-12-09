@@ -8,4 +8,4 @@ export const cleanString = str => str.replace(/^\n/, "").replace(/\n\z/, "").tri
 
 export const cleanAndSplitInput = str => cleanString(str).split("\n")
 
-export const stringToMatrix = (m) => cleanAndSplitInput(m).map(el => el.split(""))
+export const stringToMatrix = (m, s = "") => cleanAndSplitInput(m).map(el => el.trim().split(s).filter(Boolean))
